@@ -1,0 +1,1 @@
+{"name":"Local: disjointSet","url":"d:\\cp@cpp\\Graphs\\disjointSet.cpp","tests":[{"id":1626200932183,"input":"5\n1 2\n2 3\n4 5\n6 7\n5 6","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\cp@cpp\\Graphs\\disjointSet.cpp","group":"local","local":true}

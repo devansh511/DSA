@@ -1,0 +1,1 @@
+{"name":"Local: detectCycleInDirectedBfs","url":"d:\\DSA\\Graphs\\detectCycleInDirectedBfs.cpp","tests":[{"id":1642537953142,"input":"3 3\n1 2\n2 3\n1 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\DSA\\Graphs\\detectCycleInDirectedBfs.cpp","group":"local","local":true}
