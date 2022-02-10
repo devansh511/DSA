@@ -65,10 +65,12 @@ void unionSet(int u, int v, vector<int> &parent, vector<int> &rankNode)
         rankNode[u]++;
     }
 }
+
 bool cmp(node& a, node& b)
 {
     return (a.wt < b.wt);
 }
+
 int main() 
 {
 //#ifndef ONLINE_JUDGE

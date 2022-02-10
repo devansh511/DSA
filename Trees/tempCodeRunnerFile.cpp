@@ -1,0 +1,2 @@
+
+// typedef struct tree tree;

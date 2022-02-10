@@ -1,19 +1,21 @@
-//Dijkstra Algo
-//It is used to find the shortest path between one source node and all the other nodes of a graph.
-
 #include<bits/stdc++.h>
 #include<time.h>
 using namespace std;
 
 typedef vector<long long> vi;
-typedef pair<long long, long long > pii;
+typedef pair<long long , long long> pii;
+typedef unordered_map<long long, long long> um;
+typedef map<long long, long long> om;
+typedef priority_queue<long long> max_heap;
+typedef priority_queue<long long, vector<long long>, greater<long long> > min_heap;
+
 #define endl "\n"
 #define debug(val) printf("check%d\n",val)
 #define all(v) v.begin(),v.end()
+#define eb emplace_back
 #define pb push_back
-#define mp make_pair
-#define ff first
-#define ss second
+#define fi first
+#define sc second
 #define ll long long
 #define mod 1000000007
 #define nl cout << "\n"
@@ -24,51 +26,44 @@ typedef pair<long long, long long > pii;
 #define fout(i, a, n) for(ll i = 0;i < n;i++){cout << a[i] << " ";}
 #define init(arr, val) memset(arr, val, sizeof(arr))
 #define what_is(x) cerr << #x << " is " << x << endl; 
+#define pt(val) cout << #val << "->" << val << endl;
+#define setBits(n) __builtin_popcount(n)
 #define oj \
     freopen("input.txt", "r", stdin); \
     freopen("output.txt", "w", stdout);
 #define fio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+// string a = to_string(num / 10), b = to_string(num % 10);
+// char const *c = a.c_str(), *d = b.c_str();
+ll cceil(ll a, ll b){ return (a + b - 1) / b;}
 void yes(){cout << "YES";}
 void no(){cout << "NO";}
-void shortestPath(vector<pii> adj[], ll src, vi dist)
+
+
+ll power(ll a, ll b)
 {
-    dist[src] = 0;
-    priority_queue<pii, vector<pii>, greater<pii> > pq;
-    pq.push({0, src});
-    while(!pq.empty())
+    ll res = 1;
+    while(b)
     {
-        ll node =  pq.top().ss;
-        pq.pop();
-        for(auto j : adj[node])
+        if(b % 2)
         {
-            if(dist[j.ff] > dist[node] + j.ss)
-            {
-                dist[j.ff] = dist[node] + j.ss;
-                pq.push({dist[j.ff], j.ff});
-            }
+            res = res * a;
         }
+        a = a * a;
+        b /= 2;
     }
-    for(ll i = 1;i < dist.size();i++)
-        cout << dist[i] <<' ';
+    return res;
 }
-int main()
+ 
+int32_t main() 
 {
 //#ifndef ONLINE_JUDGE
 //    oj;
 //#endif
-    clock_t tStart = clock();
+//    clock_t tStart = clock();
     fio
-    ll n, m; cin >> n >> m;
-    vector<pii> adj[n + 1];
-    vi dist(n + 1, INT_MAX);
-    for(ll i = 0; i < m;i++)
-    {
-        ll u, v, wt;
-        cin >> u >> v >> wt;
-        adj[u].pb({v, wt});
-        adj[v].pb({u, wt});
-    }
-    shortestPath(adj, 1, dist);
+    ll n = log2(64);
+    // cout << log2(54);
+    cout << n;
 //#ifndef ONLINE_JUDGE
 //    printf("\nTime taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 //#endif
