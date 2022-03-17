@@ -38,46 +38,24 @@ ll cceil(ll a, ll b){ return (a + b - 1) / b;}
 void yes(){cout << "YES";}
 void no(){cout << "NO";}
 
-void answer(ll);
-int32_t main() 
+
+
+int32_t main()
 {
 //#ifndef ONLINE_JUDGE
 //    oj;
 //#endif
 //    clock_t tStart = clock();
     fio
-    ll t, cases = 1;
-    cin >> t;
-    while(t--)
-    {
-        answer(cases++);
-        nl;
-    }
+    ll n, m, x, y, k, m1, m2;
+    cin >> m1 >> m2 >> n;
+    vi a(n);
+    fin(i, a, n);
+    sort(all(a));
+    
+//    cout << "Case #" << cases << ": " << ans;
 //#ifndef ONLINE_JUDGE
 //    printf("\nTime taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 //#endif
     return 0;  
-}
-
-ll poweee(ll x, ll y)
-{
-    ll ans = 1;
-    while(y)
-    {
-        if(y & 1)
-            ans *= x;
-        x *= x;
-        y >>= 1;
-    }
-    return ans;
-}
-
-void answer(ll cases)
-{
-    ll n, m, x, y, k;
-    cin >> x >> m;
-    ll bits = log2(x);
-    if(x != poweee(2LL, bits)) bits += 1;
-    bits <= m ? cout << m - bits :cout << 0;
-//    cout << "Case #" << cases << ": " << ans;
 }

@@ -1,0 +1,1 @@
+{"name":"Local: kruskalsAlgo","url":"d:\\DSA\\Graphs\\kruskalsAlgo.cpp","tests":[{"id":1645363411027,"input":"4 4\n1 2 6\n2 3 2\n1 3 2\n1 0 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\DSA\\Graphs\\kruskalsAlgo.cpp","group":"local","local":true}

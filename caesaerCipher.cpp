@@ -38,6 +38,7 @@ ll cceil(ll a, ll b){ return (a + b - 1) / b;}
 void yes(){cout << "YES";}
 void no(){cout << "NO";}
 
+void answer(ll);
 int32_t main() 
 {
 //#ifndef ONLINE_JUDGE
@@ -45,79 +46,54 @@ int32_t main()
 //#endif
 //    clock_t tStart = clock();
     fio
-    string s, t;
-    getline(cin, s);
-    getline(cin, t);
-    int n = s.length(), m = t.length();
-    unordered_map<char, int> st;
-    queue<char> q;
-    for(int i = 0; i < n; i++)
+    ll t, cases = 1;
+    cin >> t;
+    while(t--)
     {
-        char c = s[i];
-        if(st.find(c) != st.end())
-        {
-            cout << "New Language Error";
-            return 0;
-        }
-        st.insert({c, i});
-        q.push(c);
+        answer(cases++);
+        nl;
     }
-    int j = 0;
-    while(j < m)
-    {
-        int i = j, cnt = 0;
-        bool flag = false;
-        unordered_map<char, int> ans;
-        while(j < m)
-        {
-            char c = t[i];
-            if(c == ' ')
-            {
-                flag = true;
-                cnt++;
-                j++;
-                continue;
-            }
-            if(!flag)
-            {
-
-            }
-            else 
-            {
-                break;
-            }
-        }
-    }
-
-    for(int i = 0; i < m; i++)
-    {
-        char c = t[i];
-        if(c == ' ')
-        {
-
-        }
-        if(st.find(c) != st.end())
-            ans[c] += 1;
-        else if(st.find(tolower(c)) != st.end())
-            ans[tolower(c)] += 1;
-        else if(st.find(toupper(c)) != st.end())
-            ans[toupper(c)] += 1;
-    }
-    string res;
-    while(!q.empty())
-    {
-        char c = q.front();
-        q.pop();
-        if(ans.find(c) != ans.end())
-        {
-            int cnt = ans[c];
-            while(cnt--)
-                res += c;
-        }
-    }
-    cout << res;
 //#ifndef ONLINE_JUDGE
 //    printf("\nTime taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 //#endif
     return 0;  
+}
+void answer(ll cases)
+{
+    int n;
+        cin >> n;
+
+        vector<int> arr(n + 2, 1);
+
+        for (int i = 1; i <= n; i++)
+        {
+            cin >> arr[i];
+        }
+
+        int i = 1, curr = 1;
+
+        while (i <= n)
+        {
+            if (curr)
+            {
+                arr[i] = arr[i + 1] * 2;
+                i += 2;
+            }
+            else
+            {
+                arr[i] = arr[i - 1] * 2;
+                i++;
+            }
+
+            curr = 1 - curr;
+        }
+
+        for (int i = 1; i <= n; i++)
+        {
+            cout << arr[i] << " ";
+        }
+
+        cout<<endl;
+
+//    cout << "Case #" << cases << ": " << ans;
 }

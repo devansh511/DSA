@@ -43,12 +43,12 @@ struct node
 // typedef struct node node;
 
 
-int findParent(int nd, vector<int> &parent)
+int findParent(int node, vector<int> &parent)
 {
-    if(nd == parent[nd])
-        return nd;
+    if(node == parent[node])
+        return node;
     
-    return parent[nd] = findParent(parent[nd], parent);
+    return parent[node] = findParent(parent[node], parent);
 }
 
 void unionSet(int u, int v, vector<int> &parent, vector<int> &rankNode)

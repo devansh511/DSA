@@ -46,76 +46,36 @@ int32_t main()
 //    clock_t tStart = clock();
     fio
     string s, t;
-    getline(cin, s);
-    getline(cin, t);
-    int n = s.length(), m = t.length();
-    unordered_map<char, int> st;
-    queue<char> q;
-    for(int i = 0; i < n; i++)
+    cin >> s >> t;
+    ll n = s.length(), m = t.length();
+    vector<vector<ll>> dp(n + 1, vector<ll> (m + 1, 0));
+    for(ll i = 1; i <= n; i++)
     {
-        char c = s[i];
-        if(st.find(c) != st.end())
+        for(ll j = 1; j <= m; j++)
         {
-            cout << "New Language Error";
-            return 0;
-        }
-        st.insert({c, i});
-        q.push(c);
-    }
-    int j = 0;
-    while(j < m)
-    {
-        int i = j, cnt = 0;
-        bool flag = false;
-        unordered_map<char, int> ans;
-        while(j < m)
-        {
-            char c = t[i];
-            if(c == ' ')
-            {
-                flag = true;
-                cnt++;
-                j++;
-                continue;
-            }
-            if(!flag)
-            {
-
-            }
-            else 
-            {
-                break;
-            }
+            if(s[i - 1] == t[j - 1])
+                dp[i][j] = 1 + dp[i - 1][j - 1];
+            else    
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
         }
     }
-
-    for(int i = 0; i < m; i++)
+    cout << "Length = " << dp[n][m];nl;
+    string ans;
+    ans.resize(dp[n][m], '.');
+    ll i = n, j = m, ind = dp[n][m] - 1;
+    while(i > 0 && j > 0)
     {
-        char c = t[i];
-        if(c == ' ')
+        if(s[i - 1] == t[j - 1])
         {
-
+            ans[ind--] = s[i - 1];
+            i--, j--;
         }
-        if(st.find(c) != st.end())
-            ans[c] += 1;
-        else if(st.find(tolower(c)) != st.end())
-            ans[tolower(c)] += 1;
-        else if(st.find(toupper(c)) != st.end())
-            ans[toupper(c)] += 1;
+        else if(dp[i - 1][j] > dp[i][j - 1])
+            i--;
+        else   
+            j--;
     }
-    string res;
-    while(!q.empty())
-    {
-        char c = q.front();
-        q.pop();
-        if(ans.find(c) != ans.end())
-        {
-            int cnt = ans[c];
-            while(cnt--)
-                res += c;
-        }
-    }
-    cout << res;
+    cout << ans;
 //#ifndef ONLINE_JUDGE
 //    printf("\nTime taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 //#endif
