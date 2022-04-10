@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
 #include<time.h>
 using namespace std;
+using namespace __gnu_pbds;
 
 typedef vector<long long> vi;
 typedef pair<long long , long long> pii;
@@ -8,6 +11,7 @@ typedef unordered_map<long long, long long> um;
 typedef map<long long, long long> om;
 typedef priority_queue<long long> max_heap;
 typedef priority_queue<long long, vector<long long>, greater<long long> > min_heap;
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds; // find_by_order, order_of_key
 
 #define endl "\n"
 #define debug(val) printf("check%d\n",val)
@@ -32,13 +36,41 @@ typedef priority_queue<long long, vector<long long>, greater<long long> > min_he
     freopen("input.txt", "r", stdin); \
     freopen("output.txt", "w", stdout);
 #define fio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-// string a = to_string(num / 10), b = to_string(num % 10);
-// char const *c = a.c_str(), *d = b.c_str();
 ll cceil(ll a, ll b){ return (a + b - 1) / b;}
 void yes(){cout << "YES";}
 void no(){cout << "NO";}
+int toint(string s){return atoi(s.c_str());}
+ll toll(string s){return atoll(s.c_str());}
+ll poww(ll a, ll b)
+{
+    ll ans = 1;
+    while(b)
+    {
+        if(b & 1) ans = (ans * a);
+        a = (a * a);
+        b >>= 1;
+    }
+    return ans;
+}
+ll btod(string s)
+{
+    ll res = 0, c = 0;
+    for(ll i = s.length() - 1;i >= 0; i--)  res += poww(2, c++) * (s[i] - '0');
+    return res;
+}
+string dtob(ll a)
+{
+    string ans;
+    while(a)
+    {
+        string t = to_string(a % 2);
+        ans += t[0];
+        a >>= 1;
+    }
+    reverse(all(ans));
+    return ans;
+}
 
-void answer(ll);
 int32_t main() 
 {
 //#ifndef ONLINE_JUDGE
@@ -46,54 +78,9 @@ int32_t main()
 //#endif
 //    clock_t tStart = clock();
     fio
-    ll t, cases = 1;
-    cin >> t;
-    while(t--)
-    {
-        answer(cases++);
-        nl;
-    }
+    
 //#ifndef ONLINE_JUDGE
 //    printf("\nTime taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 //#endif
     return 0;  
-}
-void answer(ll cases)
-{
-    int n;
-        cin >> n;
-
-        vector<int> arr(n + 2, 1);
-
-        for (int i = 1; i <= n; i++)
-        {
-            cin >> arr[i];
-        }
-
-        int i = 1, curr = 1;
-
-        while (i <= n)
-        {
-            if (curr)
-            {
-                arr[i] = arr[i + 1] * 2;
-                i += 2;
-            }
-            else
-            {
-                arr[i] = arr[i - 1] * 2;
-                i++;
-            }
-
-            curr = 1 - curr;
-        }
-
-        for (int i = 1; i <= n; i++)
-        {
-            cout << arr[i] << " ";
-        }
-
-        cout<<endl;
-
-//    cout << "Case #" << cases << ": " << ans;
 }
