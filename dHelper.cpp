@@ -80,7 +80,7 @@ string dtob(ll a)
 void answer(ll);
 int32_t main() 
 {
-//#ifndef ONLINE_JUDGE
+//#ifndef ONLINE_JUDGE 
 //    oj;
 //#endif
 //    clock_t tStart = clock();
