@@ -78,7 +78,9 @@ int32_t main()
 //#endif
 //    clock_t tStart = clock();
     fio
-    
+    int n = btod("10011"), m = btod("11010");
+    cout << m << ' ' << n;
+    // cout << (m % n);
 //#ifndef ONLINE_JUDGE
 //    printf("\nTime taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 //#endif

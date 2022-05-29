@@ -41,7 +41,42 @@ void yes(){cout << "YES";}
 void no(){cout << "NO";}
 int toint(string s){return atoi(s.c_str());}
 ll toll(string s){return atoll(s.c_str());}
-
+// Count Divisors
+vi countDivisors()
+{
+    vi divisors(1000005, 0);
+    for(ll i = 1; i <= 1000000; i++)
+        for(ll j = i; j <= 1000000; j += i) divisors[j] += 1;
+}
+ll poww(ll a, ll b)
+{
+    ll ans = 1;
+    while(b)
+    {
+        if(b & 1) ans = (ans * a);
+        a = (a * a);
+        b >>= 1;
+    }
+    return ans;
+}
+ll btod(string s)
+{
+    ll res = 0, c = 0;
+    for(ll i = s.length() - 1;i >= 0; i--)  res += poww(2, c++) * (s[i] - '0');
+    return res;
+}
+string dtob(ll a)
+{
+    string ans;
+    while(a)
+    {
+        string t = to_string(a % 2);
+        ans += t[0];
+        a >>= 1;
+    }
+    reverse(all(ans));
+    return ans;
+}
 void answer(ll);
 int32_t main() 
 {
@@ -62,51 +97,9 @@ int32_t main()
 //#endif
     return 0;  
 }
-void solveMe()
+void answer(ll cases)
 {
-    ll n, k;
-    cin >> n >> k;
-    vl v(n);
-    fin(i, v, n);
-    map<ll, ll>m;
-    for(int i=0; i<n; i++){
-        m[v[i]]++;
-    }
-    ll mx = -1;
-    sort(all(v));
-    for(auto it : m){
-        if(it.second >= k){
-            mx = it.first;
-        }
-    }
-    if(mx == -1){
-        cout << "-1";
-        return;
-    }
-    int j = 0;
-    while(j < n && m[v[j]]<k){
-        j++;
-    }
-    ll l = v[j], r=v[j], li=v[j];
-    ll ans = 0;
-    for(int i=j+1; i<n; i++){
-        // cout << li << " " << r;nl;
-        if(m[v[i]] >= k && v[i]-v[i-1] <= 1){
-            ll x = v[i] - l;
-            if(x > ans){
-                ans = x;
-                li = l;
-                r = v[i];
-            }
-        }
-        else{
-            while(i < n && m[v[i]] < k){
-                i++;
-            }
-            l = v[i];
-        }
-    }
-    cout << li << " " << r;
-    bool ff(ll mid, vi &a, vi &b, ll n, ll m)
+    ll n, m, x, y, k;
 
+//    cout << "Case #" << cases << ": " << ans;
 }
