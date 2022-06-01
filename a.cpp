@@ -42,15 +42,6 @@ ll cceil(ll a, ll b){ return (a + b - 1) / b;}
 int toint(string s){return atoi(s.c_str());}
 ll toll(string s){return atoll(s.c_str());}
 
-void answer(ll);
-
-vi countDivisors()
-{
-    vi divisors(1000005, 0);
-    for(ll i = 1; i <= 1000000; i++)
-        for(ll j = i; j <= 1000000; j += i) divisors[j] += 1;
-}
-
 int32_t main() 
 {
 //#ifndef ONLINE_JUDGE
@@ -58,23 +49,9 @@ int32_t main()
 //#endif
 //    clock_t tStart = clock();
     fio
-    ll t, cases = 1;
-    cin >> t;
-    pre();
-    while(t--)
-    {
-        answer(cases++);
-        nl;
-    }
+    cout << __gcd(5, 3) << ' ' << __gcd(3, 2);
 //#ifndef ONLINE_JUDGE
 //    printf("\nTime taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 //#endif
     return 0;  
-}
-void answer(ll cases)
-{
-    ll n, m, x, y, k;   
-    cin >> n;
-    cout << divisors[n];
-//    cout << "Case #" << cases << ": " << ans;
 }

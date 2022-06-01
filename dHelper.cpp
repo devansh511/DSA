@@ -77,6 +77,17 @@ string dtob(ll a)
     reverse(all(ans));
     return ans;
 }
+ll nCr(ll n, ll r)
+{
+    r = min(r, n - r);
+    ll ans = 1;
+    for(ll i = 0; i < r; i++)
+    {
+        // cout << ans << ' ';
+        ans = ((ans * (n - i)) / (i + 1));
+    }
+    return ans;
+}
 void answer(ll);
 int32_t main() 
 {
