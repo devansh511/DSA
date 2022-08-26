@@ -31,13 +31,12 @@ typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_
 #define init(arr, val) memset(arr, val, sizeof(arr))
 #define what_is(x) cerr << #x << " is " << x << endl; 
 #define pt(val) cout << #val << "->" << val << endl;
-#define sz(a) int(a.size())
 #define setBits(n) __builtin_popcount(n)
 #define yes cout << "YES"
 #define no cout << "NO"
 #define oj \
-	freopen("input.txt", "r", stdin); \
-	freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin); \
+    freopen("output.txt", "w", stdout);
 #define fio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 vi sieve(ll n){vector<bool> p(n+1, true);p[0]=p[1]=false;vi primes;for(ll i=2;i<=n;i++){if(p[i]){primes.push_back(i);for(ll j=i*i;j<=n;j+=i)p[j]=false;}}return primes;}
 ll poww(ll a,ll b){ll ans=1;while(b){if(b&1)ans=(ans * a);a=(a*a);b>>=1;}return ans;}
@@ -46,47 +45,16 @@ ll cceil(ll a, ll b){ return (a + b - 1) / b;}
 int toint(string s){return atoi(s.c_str());}
 ll toll(string s){return atoll(s.c_str());}
 
-void answer(ll);
 int32_t main() 
 {
 //#ifndef ONLINE_JUDGE
 //    oj;
 //#endif
 //    clock_t tStart = clock();
-	fio
-	ll t, cases = 1;
-	cin >> t;
-	while(t--)
-	{
-		answer(cases++);
-		nl;
-	}
+    fio
+    
 //#ifndef ONLINE_JUDGE
 //    printf("\nTime taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 //#endif
-	return 0;  
-}
-void answer(ll cases)
-{
-	ll n, m, x, y, k, H, M;
-	cin >> n >> H >> M;
-	vector<pii> a(n);
-	f(i, n)
-	{
-		ll h, m; cin >> h >> m;
-		a[i] = {(h - H + 24) % 24, m};
-	}
-	// sort(all(a));
-	pii ans = {100, 100};
-	f(i, n)
-	{
-		if(a[i].fi == 0 && a[i].sc < M) 
-			ans = min(ans, {23, (a[i].sc - M + 60) % 60});
-		else if(a[i].sc < M)
-			ans = min(ans, {a[i].fi - 1, (a[i].sc - M + 60) % 60});
-		else 
-			ans = min(ans, {a[i].fi, a[i].sc - M});
-	}
-	cout << ans.fi << ' ' << ans.sc;
-//    cout << "Case #" << cases << ": " << ans;
+    return 0;  
 }

@@ -17,6 +17,14 @@
         "type_traits": "cpp",
         "random": "cpp",
         "complex": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "ratio": "cpp",
+        "iomanip": "cpp",
+        "bitset": "cpp",
+        "utility": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp",
+        "new": "cpp",
+        "cmath": "cpp"
     }
 }
